@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- ✅ REQUIRED for GitHub + mobile -->
+<!-- ✅ IMPORTANT -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Weather UI</title>
@@ -13,20 +13,21 @@
 <style>
 body {
     margin: 0;
+    min-height: 100vh;
     background: url("https://images.unsplash.com/photo-1501973801540-537f08ccae7b") no-repeat center center/cover;
     position: relative;
 }
 
-/* dark overlay */
+/* ✅ FIXED OVERLAY */
 body::before {
     content: "";
-    position: fixed;
+    position: fixed;   /* 🔥 important fix */
     inset: 0;
     background: rgba(0,0,0,0.3);
     z-index: 0;
 }
 
-/* card styling */
+/* card */
 .card {
     width: 350px;
     border-radius: 20px;
@@ -38,6 +39,7 @@ body::before {
     z-index: 1;
 }
 
+/* text */
 .temp {
     font-size: 50px;
     font-weight: bold;
@@ -56,7 +58,7 @@ h4 {
 
 <body>
 
-<!-- ✅ PERFECT CENTERING (Bootstrap method) -->
+<!-- ✅ PERFECT CENTERING -->
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
 
     <div class="card text-center p-4">
