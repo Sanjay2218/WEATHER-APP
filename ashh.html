@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,13 +13,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    align:center;
-    right:50;
-    left:50;
+    flex-direction: column;
     background: url("https://images.unsplash.com/photo-1501973801540-537f08ccae7b") no-repeat center center/cover;
     position: relative;
 }
-
 
 body::before {
     content: "";
@@ -30,7 +28,6 @@ body::before {
     left: 0;
 }
 
-
 .card {
     width: 350px;
     border-radius: 20px;
@@ -40,6 +37,7 @@ body::before {
     color: white;
     position: relative;
     z-index: 1;
+    text-align: center;
 }
 
 .temp {
@@ -52,27 +50,32 @@ body::before {
     font-size: 60px;
 }
 
-
 h4 {
     color: #222;
+}
+
+/* Center dropdown text */
+select {
+    text-align: center;
+    text-align-last: center;
 }
 </style>
 </head>
 
 <body>
 
-<div class="card text-center p-4">
+<div class="card p-4">
 
     <h3 class="mb-3">🌤️ Weather App</h3>
 
-    <select class="form-select mb-3" id="citySelect" onchange="loadWeather()">
+    <select class="form-select mb-3 text-center" id="citySelect" onchange="loadWeather()">
         <option value="">Select City</option>
         <option value="Erode">Erode</option>
         <option value="chennai">Chennai</option>
         <option value="coimbatore">Coimbatore</option>
     </select>
 
-    <div id="weatherBox">
+    <div id="weatherBox" class="text-center">
         <p>Select a city</p>
     </div>
 
@@ -129,3 +132,4 @@ function loadWeather() {
 
 </body>
 </html>
+
