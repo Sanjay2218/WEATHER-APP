@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Weather UI</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: url("https://images.unsplash.com/photo-1501973801540-537f08ccae7b") no-repeat center center/cover;
+    position: relative;
+}
+
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    top: 0;
+    left: 0;
+}
+
+
+.card {
+    width: 350px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.temp {
+    font-size: 50px;
+    font-weight: bold;
+    color: black; 
+}
+
+.icon {
+    font-size: 60px;
+}
+
+
+h4 {
+    color: #222;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card text-center p-4">
+
+    <h3 class="mb-3">🌤️ Weather App</h3>
+
+    <select class="form-select mb-3" id="citySelect" onchange="loadWeather()">
+        <option value="">Select City</option>
+        <option value="Erode">Erode</option>
+        <option value="chennai">Chennai</option>
+        <option value="coimbatore">Coimbatore</option>
+    </select>
+
+    <div id="weatherBox">
+        <p>Select a city</p>
+    </div>
+
+</div>
+
+<script>
+const weatherData = {
+    Erode: {
+        city: "Erode",
+        temperature: 32,
+        condition: "Sunny",
+        humidity: 60,
+        wind: 5,
+        icon: "☀️"
+    },
+    chennai: {
+        city: "Chennai",
+        temperature: 34,
+        condition: "Hot",
+        humidity: 70,
+        wind: 6,
+        icon: "🔥"
+    },
+    coimbatore: {
+        city: "Coimbatore",
+        temperature: 28,
+        condition: "Cloudy",
+        humidity: 65,
+        wind: 4,
+        icon: "☁️"
+    }
+};
+
+function loadWeather() {
+    const selectedCity = document.getElementById("citySelect").value;
+
+    if (!selectedCity) {
+        document.getElementById("weatherBox").innerHTML = "<p>Select a city</p>";
+        return;
+    }
+
+    const data = weatherData[selectedCity];
+
+    document.getElementById("weatherBox").innerHTML = `
+        <div class="icon">${data.icon}</div>
+        <h4>${data.city}</h4>
+        <div class="temp">${data.temperature}°C</div>
+        <p>${data.condition}</p>
+        <p>💧 Humidity: ${data.humidity}%</p>
+        <p>🌬️ Wind: ${data.wind} m/s</p>
+    `;
+}
+</script>
+
+</body>
+</html>
