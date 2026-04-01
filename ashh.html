@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- ✅ IMPORTANT FIX -->
+<!-- ✅ REQUIRED for GitHub + mobile -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Weather UI</title>
@@ -12,25 +12,21 @@
 
 <style>
 body {
-    height: 100vh;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     background: url("https://images.unsplash.com/photo-1501973801540-537f08ccae7b") no-repeat center center/cover;
     position: relative;
 }
 
-/* overlay */
+/* dark overlay */
 body::before {
     content: "";
-    position: absolute;
-    inset: 0; /* cleaner than width/height/top/left */
+    position: fixed;
+    inset: 0;
     background: rgba(0,0,0,0.3);
+    z-index: 0;
 }
 
-/* card */
+/* card styling */
 .card {
     width: 350px;
     border-radius: 20px;
@@ -42,11 +38,10 @@ body::before {
     z-index: 1;
 }
 
-/* text */
 .temp {
     font-size: 50px;
     font-weight: bold;
-    color: black; 
+    color: black;
 }
 
 .icon {
@@ -61,19 +56,24 @@ h4 {
 
 <body>
 
-<div class="card text-center p-4">
+<!-- ✅ PERFECT CENTERING (Bootstrap method) -->
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
 
-    <h3 class="mb-3">🌤️ Weather App</h3>
+    <div class="card text-center p-4">
 
-    <select class="form-select mb-3" id="citySelect" onchange="loadWeather()">
-        <option value="">Select City</option>
-        <option value="Erode">Erode</option>
-        <option value="chennai">Chennai</option>
-        <option value="coimbatore">Coimbatore</option>
-    </select>
+        <h3 class="mb-3">🌤️ Weather App</h3>
 
-    <div id="weatherBox">
-        <p>Select a city</p>
+        <select class="form-select mb-3 text-center" id="citySelect" onchange="loadWeather()">
+            <option value="">Select City</option>
+            <option value="Erode">Erode</option>
+            <option value="chennai">Chennai</option>
+            <option value="coimbatore">Coimbatore</option>
+        </select>
+
+        <div id="weatherBox">
+            <p>Select a city</p>
+        </div>
+
     </div>
 
 </div>
